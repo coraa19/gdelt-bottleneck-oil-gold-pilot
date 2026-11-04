@@ -35,7 +35,7 @@ GDELT GKG 2.0 (2022 H1)
  [Hypothesis Testing]  ──> Out-of-sample Pinball Loss & Diebold-Mariano test
 
 ---
-
+```text
 ## 3. Measurement Validity & Hand-Labeling Evidence
 To avoid circular reasoning and ungrounded claims:
 - A transparent heuristic rule (`src/lexicon.py`) was formulated to separate physical supply disruption from diplomatic/procedural events.
