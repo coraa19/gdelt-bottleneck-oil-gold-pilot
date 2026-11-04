@@ -8,9 +8,9 @@ BASE = "http://data.gdeltproject.org/gdeltv2/{}.gkg.csv.zip"
 OUT = Path("data/gdelt_titles.csv")
 DONE = Path("data/processed_files.txt")
 
-ENERGY = (r"\b(oil|crude|gas|lng|fuel|energy|opec|tankers?|shipping|pipelines?|"
+ENERGY = (r"\b(?:oil|crude|gas|lng|fuel|energy|opec|tankers?|shipping|pipelines?|"
           r"refiner(?:y|ies)|hormuz|suez|red sea|strait|chokepoint)\b")
-CONFLICT = (r"\b(war|attacks?|strikes?|missiles?|drones?|sanctions?|blockade|embargo|"
+CONFLICT = (r"\b(?:war|attacks?|strikes?|missiles?|drones?|sanctions?|blockade|embargo|"
             r"ceasefire|talks|conflict|military|invasion|houthis?|threat|seiz(?:e|ed|ure))\b")
 
 
@@ -77,13 +77,3 @@ def main():
         n_raw, df = parse(content)
         msg = f"{s}: zip {len(content)/1e6:.1f} MB, raw {n_raw}, kept {len(df)}"
         print(msg)
-        if args.test:
-            print(df.sample(min(30, len(df)), random_state=0).to_string())
-            return
-        df.to_csv(OUT, mode="a", header=not OUT.exists(), index=False)
-        with DONE.open("a") as f:
-            f.write(s + "\n")
-
-
-if __name__ == "__main__":
-    main()
