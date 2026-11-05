@@ -64,7 +64,7 @@ To avoid circular reasoning and ungrounded claims:
 
 ## 4. Empirical Evaluation & Key Findings
 
-Models were evaluated using an **expanding window** out-of-sample procedure (initial training window = 40 trading days; strictly 1-step-ahead forecast; no look-ahead bias).
+Models were evaluated using an **expanding window** out-of-sample procedure (initial training window = 40 trading days; strictly predictive information flow conditioning on realized market states; no look-ahead bias).
 
 ### Out-of-Sample Pinball Loss & Diebold-Mariano (DM) Test
 
