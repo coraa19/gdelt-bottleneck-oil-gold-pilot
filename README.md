@@ -122,9 +122,3 @@ python src/model_quantreg.py
 
 * Implementing **Markov-Switching Quantile Regression (MS-QR)** to account for endogenous transitions between calm and acute crisis volatility states.
 * Expanding GDELT ingestion to full 96-snapshot continuous feeds with rolling exponential decay kernels to resolve zero-inflation on low-volume trading days.
-
-```
-
-<FollowUp label="Want to push these README and notebook changes directly to your GitHub repository?" query="Show me the git commands to commit and push the updated README.md and notebook to GitHub."/>
-
-```
