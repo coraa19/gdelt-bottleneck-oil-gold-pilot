@@ -42,7 +42,8 @@ GDELT GKG 2.0 (2022 H1)
 | **2. Null & Integrity Filter** | 5,420 | 4,110 | Dropped records with missing titles, invalid URLs, or broken tone strings. |
 | **3. Syndicate De-duplication** | 4,110 | 1,507 | Collapsed multi-outlet wire syndication into unique same-day narrative events. |
 | **4. Feature Alignment** | 1,507 | 68 trading days | Aggregated to trading-day frequency; mapped weekend events via Friday/Monday roll. |
-Due to bandwidth and compute bounds in this pilot stage, we sample two 15-minute GKG snapshots daily (06:00 and 18:00 UTC, covering ~2% of daily GKG volume) as an exploratory proxy rather than the full 96-snapshot streaming corpus.
+
+*Due to bandwidth and compute bounds in this pilot stage, we sample two 15-minute GKG snapshots daily (06:00 and 18:00 UTC, covering ~2% of daily GKG volume) as an exploratory proxy rather than the full 96-snapshot streaming corpus.
 ---
 
 ## 3. Measurement Validity & Hand-Labeling Evidence
