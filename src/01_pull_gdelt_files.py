@@ -1,6 +1,12 @@
-import argparse, csv, io, re, time, zipfile
+import argparse
+import csv
 from datetime import datetime, timedelta
+import io
 from pathlib import Path
+import re
+import time
+import zipfile
+
 import pandas as pd
 import requests
 
@@ -8,10 +14,14 @@ BASE = "http://data.gdeltproject.org/gdeltv2/{}.gkg.csv.zip"
 OUT = Path("data/gdelt_titles.csv")
 DONE = Path("data/processed_files.txt")
 
-ENERGY = (r"\b(?:oil|crude|gas|lng|fuel|energy|opec|tankers?|shipping|pipelines?|"
-          r"refiner(?:y|ies)|hormuz|suez|red sea|strait|chokepoint)\b")
-CONFLICT = (r"\b(?:war|attacks?|strikes?|missiles?|drones?|sanctions?|blockade|embargo|"
-            r"ceasefire|talks|conflict|military|invasion|houthis?|threat|seiz(?:e|ed|ure))\b")
+ENERGY = (
+    r"\b(?:oil|crude|gas|lng|fuel|energy|opec|tankers?|shipping|pipelines?|"
+    r"refiner(?:y|ies)|hormuz|suez|red sea|strait|chokepoint)\b"
+)
+CONFLICT = (
+    r"\b(?:war|attacks?|strikes?|missiles?|drones?|sanctions?|blockade|embargo|"
+    r"ceasefire|talks|conflict|military|invasion|houthis?|threat|seiz(?:e|ed|ure))\b"
+)
 
 
 def fetch(stamp):
@@ -32,17 +42,28 @@ def fetch(stamp):
 def parse(content):
     with zipfile.ZipFile(io.BytesIO(content)) as z:
         with z.open(z.namelist()[0]) as f:
-            df = pd.read_csv(f, sep="\t", header=None, usecols=[1, 3, 25, 26],
-                             dtype=str, quoting=csv.QUOTE_NONE, on_bad_lines="skip",
-                             encoding="utf-8", encoding_errors="replace")
+            df = pd.read_csv(
+                f,
+                sep="\t",
+                header=None,
+                usecols=[1, 3, 25, 26],
+                dtype=str,
+                quoting=csv.QUOTE_NONE,
+                on_bad_lines="skip",
+                encoding="utf-8",
+                encoding_errors="replace",
+            )
     df.columns = ["date", "source", "translation", "extras"]
     n_raw = len(df)
-    df = df[df["translation"].isna()].copy()          # English-origin records only
+    df = df[df["translation"].isna()].copy()
     df["title"] = df["extras"].str.extract(r"<PAGE_TITLE>(.*?)</PAGE_TITLE>")
     df = df.dropna(subset=["title"]).copy()
     t = df["title"].str.lower()
-    df = df[t.str.contains(ENERGY, regex=True) & t.str.contains(CONFLICT, regex=True)].copy()
-    df["day"] = pd.to_datetime(df["date"], format="%Y%m%d%H%M%S").dt.date
+    df = df[
+        t.str.contains(ENERGY, regex=True) & t.str.contains(CONFLICT, regex=True)
+    ].copy()
+    df["raw_day"] = pd.to_datetime(df["date"], format="%Y%m%d%H%M%S").dt.date
+    df["day"] = df["raw_day"]
     return n_raw, df[["day", "source", "title"]]
 
 
@@ -77,3 +98,14 @@ def main():
         n_raw, df = parse(content)
         msg = f"{s}: zip {len(content)/1e6:.1f} MB, raw {n_raw}, kept {len(df)}"
         print(msg)
+
+        if len(df) > 0:
+            header = not OUT.exists()
+            df.to_csv(OUT, mode="a", index=False, header=header)
+
+        with open(DONE, "a", encoding="utf-8") as f_done:
+            f_done.write(f"{s}\n")
+
+
+if __name__ == "__main__":
+    main()

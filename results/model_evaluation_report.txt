@@ -3,73 +3,64 @@
 --- Quantile: 0.05 ---
                          QuantReg Regression Results                          
 ==============================================================================
-Dep. Variable:               gold_ret   Pseudo R-squared:               0.3123
-Model:                       QuantReg   Bandwidth:                         nan
-Method:                 Least Squares   Sparsity:                          nan
-Date:                Thu, 05 Nov 2026   No. Observations:                   68
-Time:                        00:05:58   Df Residuals:                       63
+Dep. Variable:               gold_ret   Pseudo R-squared:               0.1607
+Model:                       QuantReg   Bandwidth:                    0.008690
+Method:                 Least Squares   Sparsity:                      0.09246
+Date:                Thu, 05 Nov 2026   No. Observations:                  128
+Time:                        23:48:35   Df Residuals:                      123
                                         Df Model:                            4
 =========================================================================================
                             coef    std err          t      P>|t|      [0.025      0.975]
 -----------------------------------------------------------------------------------------
-Intercept                 0.1534        nan        nan        nan         nan         nan
-oil_ret                   0.1916        nan        nan        nan         nan         nan
-vix_level                -0.0530        nan        nan        nan         nan         nan
-lag_bottleneck_index     -0.9082        nan        nan        nan         nan         nan
-interaction_vix_index     0.2867        nan        nan        nan         nan         nan
+Intercept                -0.0184      0.053     -0.348      0.729      -0.123       0.087
+oil_ret                   0.0772      0.055      1.411      0.161      -0.031       0.185
+vix_level                 0.0006      0.016      0.034      0.973      -0.032       0.033
+lag_bottleneck_index      0.1921      0.426      0.451      0.653      -0.651       1.035
+interaction_vix_index    -0.0587      0.129     -0.455      0.650      -0.314       0.197
 =========================================================================================
-
-The condition number is large, 1.02e+03. This might indicate that there are
-strong multicollinearity or other numerical problems.
 
 --- Quantile: 0.5 ---
                          QuantReg Regression Results                          
 ==============================================================================
-Dep. Variable:               gold_ret   Pseudo R-squared:               0.2303
-Model:                       QuantReg   Bandwidth:                    0.009630
-Method:                 Least Squares   Sparsity:                      0.02336
-Date:                Thu, 05 Nov 2026   No. Observations:                   68
-Time:                        00:05:58   Df Residuals:                       63
+Dep. Variable:               gold_ret   Pseudo R-squared:               0.1021
+Model:                       QuantReg   Bandwidth:                    0.008218
+Method:                 Least Squares   Sparsity:                      0.02204
+Date:                Thu, 05 Nov 2026   No. Observations:                  128
+Time:                        23:48:35   Df Residuals:                      123
                                         Df Model:                            4
 =========================================================================================
                             coef    std err          t      P>|t|      [0.025      0.975]
 -----------------------------------------------------------------------------------------
-Intercept                -0.0022      0.046     -0.048      0.962      -0.094       0.090
-oil_ret                   0.1939      0.037      5.274      0.000       0.120       0.267
-vix_level                 0.0010      0.014      0.067      0.946      -0.027       0.029
-lag_bottleneck_index     -0.0140      0.398     -0.035      0.972      -0.810       0.782
-interaction_vix_index     0.0005      0.121      0.004      0.997      -0.242       0.243
+Intercept                 0.0201      0.019      1.063      0.290      -0.017       0.057
+oil_ret                   0.1429      0.031      4.633      0.000       0.082       0.204
+vix_level                -0.0063      0.006     -1.076      0.284      -0.018       0.005
+lag_bottleneck_index      0.0086      0.074      0.117      0.907      -0.137       0.155
+interaction_vix_index    -0.0022      0.023     -0.097      0.923      -0.047       0.043
 =========================================================================================
-
-The condition number is large, 1.02e+03. This might indicate that there are
-strong multicollinearity or other numerical problems.
 
 --- Quantile: 0.95 ---
                          QuantReg Regression Results                          
 ==============================================================================
-Dep. Variable:               gold_ret   Pseudo R-squared:               0.2668
-Model:                       QuantReg   Bandwidth:                         nan
-Method:                 Least Squares   Sparsity:                          nan
-Date:                Thu, 05 Nov 2026   No. Observations:                   68
-Time:                        00:05:58   Df Residuals:                       63
+Dep. Variable:               gold_ret   Pseudo R-squared:               0.1533
+Model:                       QuantReg   Bandwidth:                    0.009121
+Method:                 Least Squares   Sparsity:                      0.06801
+Date:                Thu, 05 Nov 2026   No. Observations:                  128
+Time:                        23:48:35   Df Residuals:                      123
                                         Df Model:                            4
 =========================================================================================
                             coef    std err          t      P>|t|      [0.025      0.975]
 -----------------------------------------------------------------------------------------
-Intercept                -0.0316        nan        nan        nan         nan         nan
-oil_ret                   0.1113        nan        nan        nan         nan         nan
-vix_level                 0.0150        nan        nan        nan         nan         nan
-lag_bottleneck_index     -0.1627        nan        nan        nan         nan         nan
-interaction_vix_index     0.0314        nan        nan        nan         nan         nan
+Intercept                -0.0373      0.036     -1.045      0.298      -0.108       0.033
+oil_ret                   0.0773      0.044      1.738      0.085      -0.011       0.165
+vix_level                 0.0163      0.011      1.484      0.140      -0.005       0.038
+lag_bottleneck_index      0.1574      0.088      1.781      0.077      -0.018       0.332
+interaction_vix_index    -0.0501      0.027     -1.871      0.064      -0.103       0.003
 =========================================================================================
-
-The condition number is large, 1.02e+03. This might indicate that there are
-strong multicollinearity or other numerical problems.
 
 
 === OUT-OF-SAMPLE PINBALL LOSS & DIEBOLD-MARIANO TEST ===
 Quantile   | Base Loss    | Aug Loss     | DM Stat    | p-value   
 -----------------------------------------------------------------
-0.05       | 0.001020     | 0.001102     | -0.331     | 0.630     
-0.50       | 0.003168     | 0.003089     | 0.704      | 0.241     
-0.95       | 0.000956     | 0.000825     | 5.320      | 0.000     
+0.05       | 0.001225     | 0.001136     | 1.353      | 0.088     
+0.50       | 0.003853     | 0.003904     | -1.258     | 0.896     
+0.95       | 0.000895     | 0.000925     | -0.581     | 0.719     
