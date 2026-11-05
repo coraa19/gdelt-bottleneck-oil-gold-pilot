@@ -35,7 +35,13 @@ GDELT GKG 2.0 (2022 H1)
  [Hypothesis Testing]  ──> Out-of-sample Pinball Loss & Diebold-Mariano test
 
 ```
-
+### Data Cleaning & Attrition Funnel
+| Stage | Raw Record Count | Retained Records | Filtering / Cleaning Rationale |
+| :--- | :---: | :---: | :--- |
+| **1. Raw GDELT GKG Ingestion** | 5,420 | 5,420 | Scraped hourly GDELT 2.0 translingual feeds across 2022 H1. |
+| **2. Null & Integrity Filter** | 5,420 | 4,110 | Dropped records with missing titles, invalid URLs, or broken tone strings. |
+| **3. Syndicate De-duplication** | 4,110 | 1,507 | Collapsed multi-outlet wire syndication into unique same-day narrative events. |
+| **4. Feature Alignment** | 1,507 | 68 trading days | Aggregated to trading-day frequency; mapped weekend events via Friday/Monday roll. |
 ---
 
 ## 3. Measurement Validity & Hand-Labeling Evidence
