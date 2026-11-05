@@ -220,4 +220,5 @@ __marimo__/
 .streamlit/secrets.toml
 
 # Raw data (not committed)
-data/
+data/*
+!data/sample_200_for_labeling.csv
