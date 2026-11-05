@@ -16,3 +16,5 @@ Confusion Matrix:
 True_bottleneck               32                0               0
 True_diplomatic                1                7               1
 True_unrelated                 1                3             155
+
+Note on Methodological Constraints: The 200 manually annotated articles functioned as an iterative development and error-analysis benchmark. Readers should interpret the Macro-F1 = 0.90 as in-sample calibration reliability. The diplomatic category contains limited support (N=9, F1=0.74). Out-of-sample generalization should be independently validated on an unseen hold-out set.
