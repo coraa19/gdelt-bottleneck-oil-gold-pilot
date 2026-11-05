@@ -85,13 +85,6 @@ Models were evaluated using an **expanding window** out-of-sample procedure (ini
 
 ---
 
-### Index Construction & Zero-Observation Handling
-- **Sampling Granularity**: Due to exploratory bandwidth constraints, raw GDELT GKG records are pulled from two fixed daily snapshots (06:00 and 18:00 UTC).
-- **Zero-Inflation**: Days with no matching energy-conflict headlines are imputed as `Index = 0.0` (neutral baseline assumption). 
-- **Discrete Jumps**: On low-volume days (median headline count = 8, IQR = [3, 14]), the bottleneck proportion exhibits discrete sensitivity (jumping between 0.0, 0.5, and 1.0). In full-scale implementations, a continuous exponential rolling decay kernel or full 96-snapshot aggregation is recommended to mitigate small-number variance.
-
----
-
 ## 6. Reproducibility
 
 ```powershell
